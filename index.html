@@ -245,6 +245,12 @@ function launchHearts() {
         document.body.appendChild(heart);
     }
 }
+window.addEventListener("click", function(e) {
+    const modal = document.getElementById("galleryModal");
+    if (e.target === modal) {
+        modal.classList.remove("show");
+    }
+});
 </script>
 <div id="galleryModal" class="modal hidden">
     <div class="modal-content">
