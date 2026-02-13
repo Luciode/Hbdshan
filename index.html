@@ -104,20 +104,22 @@ noBtn.addEventListener("click", () => {
 });
 
 yesBtn.addEventListener("click", () => {
+    document.body.style.background = "linear-gradient(135deg, #ff4d6d, #ff85a1)";
     document.getElementById("main").innerHTML = `
         <h1 class="celebrate">SHE SAID YES 😍💖</h1>
-        <div style="font-size:80px;">🥰</div>
-        <h2>You’re My Valentine!!!</h2>
+        <div style="font-size:100px; animation: pop 1s ease;">🥰💘</div>
+        <h2>You’re My Valentine Forever 💕</h2>
         <div class="reasons">
             ${generateReasons()}
         </div>
     `;
     launchConfetti();
+    launchHearts();
 });
 
 function generateReasons() {
     let list = "<ol>";
-    for(let i = 1; i <= 100; i++){
+    for(let i = 1; i <= 50; i++){
         list += `<li>You make my life better in ${i} different ways 💕</li>`;
     }
     list += "</ol>";
@@ -134,6 +136,18 @@ function launchConfetti() {
             [Math.floor(Math.random()*5)];
         confetti.style.animationDuration = (Math.random()*3+2)+"s";
         document.body.appendChild(confetti);
+    }
+}
+function launchHearts() {
+    for(let i = 0; i < 40; i++){
+        let heart = document.createElement("div");
+        heart.innerHTML = "💖";
+        heart.style.position = "absolute";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.top = "100vh";
+        heart.style.fontSize = (Math.random() * 20 + 20) + "px";
+        heart.style.animation = `floatUp ${Math.random()*3+3}s linear forwards`;
+        document.body.appendChild(heart);
     }
 }
 </script>
