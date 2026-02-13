@@ -83,6 +83,40 @@
         margin-top: 20px;
         font-size: 14px;
     }
+    .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    text-align: center;
+}
+
+.close {
+    cursor: pointer;
+    font-size: 30px;
+    float: right;
+}
+
+.memory {
+    width: 100%;
+    margin: 10px 0;
+    border-radius: 15px;
+}
 </style>
 </head>
 <body>
@@ -107,21 +141,96 @@ yesBtn.addEventListener("click", () => {
     document.body.style.background = "linear-gradient(135deg, #ff4d6d, #ff85a1)";
     document.getElementById("main").innerHTML = `
         <h1 class="celebrate">SHE SAID YES 😍💖</h1>
-        <div style="font-size:100px; animation: pop 1s ease;">🥰💘</div>
+        <div style="font-size:100px;">🥰💘</div>
         <h2>You’re My Valentine Forever 💕</h2>
+
+        <button onclick="openGallery()">Our Memories 📸</button>
+
         <div class="reasons">
             ${generateReasons()}
+        </div>
+
+        <div id="galleryModal" class="modal hidden">
+            <div class="modal-content">
+                <span onclick="closeGallery()" class="close">&times;</span>
+                <h2>Our Favorite Memories 💖</h2>
+                <img src="images/pic1.jpg" class="memory">
+                <img src="images/pic2.jpg" class="memory">
+                <video controls class="memory">
+                    <source src="images/clip1.mp4" type="video/mp4">
+                </video>
+            </div>
         </div>
     `;
     launchConfetti();
     launchHearts();
 });
+function openGallery() {
+    document.getElementById("galleryModal").classList.remove("hidden");
+}
+
+function closeGallery() {
+    document.getElementById("galleryModal").classList.add("hidden");
+}
 
 function generateReasons() {
+    const reasons = [
+        "You make even boring days fun.",
+        "You’re way too competitive but I love it.",
+        "I love your laugh.",
+        "I love how i feel comfortable around you.",
+        "I love how you believe in me.",
+        "I love your laugh",
+        "I love how you’re secretly soft (even if you act tough ;P)",
+        "I love how excited you get when you're happy",
+        "I love your humor",
+        "I love how you’re my favorite person to talk to.",
+        "I love that you make games more fun.",
+        "I love that you care about us.",
+        "I love your eyes",
+        "I love how you make me want to be better.",
+        "I love that you’re strong",
+        "I love that you’re smart",
+        "I love that you have goals",
+        "I love how You make me feel chosen",
+        "I love that you listen like a good girl",
+        "I love your voice",
+        "I love that i can trust you",
+        "I love that you open up to me.",
+        "I love that you’re beautiful.",
+        "I love how adorable you get when talking about inrests",
+        "I love that you’re my best friend.",
+        "I love that i get excited to talk to you",
+        "I love that i smile when i think about you",
+        "I love that you care.",
+        "I love that you support my goals.",
+        "I love your voice",
+        "I love the memories we've made.",
+        "I love that you’re my favorite notification.",
+        "I love that you make the late nights better.",
+        "I love how you listen to daddy ;).",
+        "I love how pretty you are.",
+        "I love how silly you are",
+        "I love how cute you are.",
+        "I love how comfortable i feel around you",
+        "I love that you let me be myself (sometimes ;P).",
+        "I love that you dont judge me (soemtimes ;P)",
+        "I love that you're thoughtful",
+        "I love the way you maon for me",
+        "I love our little moments",
+        "I love that you inspire me",
+        "I love that you feel like home.",
+        "I love thinking about our exciting future",
+        "I love that you're my peace.",
+        "I love that you're my favorite person.",
+        "I love that you love me.",
+        "I love that you’re you. And that’s everything."
+    ];
+
     let list = "<ol>";
-    for(let i = 1; i <= 50; i++){
-        list += `<li>You make my life better in ${i} different ways 💕</li>`;
-    }
+    reasons.forEach(reason => {
+        list += `<li>${reason} 💕</li>`;
+    });
     list += "</ol>";
     return list;
 }
