@@ -139,29 +139,21 @@ noBtn.addEventListener("click", () => {
 
 yesBtn.addEventListener("click", () => {
     document.body.style.background = "linear-gradient(135deg, #ff4d6d, #ff85a1)";
+    
     document.getElementById("main").innerHTML = `
         <h1 class="celebrate">SHE SAID YES 😍💖</h1>
         <div style="font-size:100px;">🥰💘</div>
         <h2>You’re My Valentine Forever 💕</h2>
 
-        <button onclick="openGallery()">Our Memories 📸</button>
-
         <div class="reasons">
             ${generateReasons()}
         </div>
 
-        <div id="galleryModal" class="modal hidden">
-            <div class="modal-content">
-                <span onclick="closeGallery()" class="close">&times;</span>
-                <h2>Our Favorite Memories 💖</h2>
-                <img src="images/pic1.jpg" class="memory">
-                <img src="images/pic2.jpg" class="memory">
-                <video controls class="memory">
-                    <source src="images/clip1.mp4" type="video/mp4">
-                </video>
-            </div>
-        </div>
+        <button onclick="openGallery()" style="margin-top:20px;">
+            View Our Memories 📸
+        </button>
     `;
+
     launchConfetti();
     launchHearts();
 });
@@ -260,6 +252,16 @@ function launchHearts() {
     }
 }
 </script>
-
+<div id="galleryModal" class="modal hidden">
+    <div class="modal-content">
+        <span onclick="closeGallery()" class="close">&times;</span>
+        <h2>Our Favorite Memories 💖</h2>
+        <img src="images/pic1.jpg" class="memory">
+        <img src="images/pic2.jpg" class="memory">
+        <video controls class="memory">
+            <source src="images/clip1.mp4" type="video/mp4">
+        </video>
+    </div>
+</div>
 </body>
 </html>
