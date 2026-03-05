@@ -154,14 +154,14 @@ yesBtn.addEventListener("click", () => {
         <button id="birthdayCelebsBtn" style="margin-top:10px;">People You Share a Birthday With 🌟</button>
     `;
 
-    // **Add event listeners AFTER innerHTML**
+    // ⚡ Attach event listeners **after innerHTML replacement**
     document.getElementById("galleryBtn").addEventListener("click", openGallery);
     document.getElementById("birthdayCelebsBtn").addEventListener("click", openBirthdayCelebs);
 
-    // Play music sequence
+    // ⚡ Play audio sequence
     playBirthdayAudioSequence();
 
-    // Visual effects
+    // ⚡ Confetti + hearts
     launchConfetti();
     launchHearts();
 });
@@ -235,39 +235,29 @@ function generateReasons() {
     return list;
 }
 
-// Gallery modal
-function openGallery() {
-    document.getElementById("galleryModal").classList.add("show");
-}
-
-function closeGallery() {
-    document.getElementById("galleryModal").classList.remove("show");
-}
-
-// Birthday Celebs modal
-function openBirthdayCelebs() {
-    document.getElementById("celebModal").classList.add("show");
-}
-
-function closeCelebs() {
-    document.getElementById("celebModal").classList.remove("show");
-}
-
-// Audio sequence
-function playBirthdayAudioSequence() {
-    let audio1 = document.getElementById("audio1");
-    let audio2 = document.getElementById("audio2");
-
-    audio1.play();
-    audio1.onended = () => {
-        audio2.play();
-    };
-}
+// Gallery mo
 
 // Confetti & hearts
 function launchConfetti() { /* your existing code */ }
 function launchHearts() { /* your existing code */ }
-
+function openGallery() {
+    document.getElementById("galleryModal").classList.add("show");
+}
+function closeGallery() {
+    document.getElementById("galleryModal").classList.remove("show");
+}
+function openBirthdayCelebs() {
+    document.getElementById("celebModal").classList.add("show");
+}
+function closeCelebs() {
+    document.getElementById("celebModal").classList.remove("show");
+}
+function playBirthdayAudioSequence() {
+    let audio1 = document.getElementById("audio1");
+    let audio2 = document.getElementById("audio2");
+    audio1.play();
+    audio1.onended = () => { audio2.play(); };
+}
 // Click outside modals to close
 window.addEventListener("click", function(e) {
     const gallery = document.getElementById("galleryModal");
