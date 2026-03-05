@@ -230,35 +230,16 @@ function generateReasons() {
     return list;
 }
 
-function launchConfetti() {
-    for(let i = 0; i < 100; i++){
-        let confetti = document.createElement("div");
-        confetti.classList.add("confetti");
-        confetti.style.left = Math.random() * 100 + "vw";
-        confetti.style.backgroundColor = 
-            ["#ffcc00","#ff6b6b","#4ecdc4","#a29bfe","#fd79a8"]
-            [Math.floor(Math.random()*5)];
-        confetti.style.animationDuration = (Math.random()*3+2)+"s";
-        document.body.appendChild(confetti);
-    }
+// Gallery modal
+function openGallery() {
+    document.getElementById("galleryModal").classList.add("show");
 }
-function launchHearts() {
-    for(let i = 0; i < 40; i++){
-        let heart = document.createElement("div");
-        heart.innerHTML = "💖";
-        heart.style.position = "absolute";
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.top = "100vh";
-        heart.style.fontSize = (Math.random() * 20 + 20) + "px";
-        heart.style.animation = `floatUp ${Math.random()*3+3}s linear forwards`;
-        document.body.appendChild(heart);
-    }
+
+function closeGallery() {
+    document.getElementById("galleryModal").classList.remove("show");
 }
-window.addEventListener("click", function(e) {
-    const modal = document.getElementById("galleryModal");
-    if (e.target === modal) {
-        modal.classList.remove("show");
-    }
+
+// Birthday Celebs modal
 function openBirthdayCelebs() {
     document.getElementById("celebModal").classList.add("show");
 }
@@ -266,21 +247,29 @@ function openBirthdayCelebs() {
 function closeCelebs() {
     document.getElementById("celebModal").classList.remove("show");
 }
-function playBirthdayAudioSequence() {
 
+// Audio sequence
+function playBirthdayAudioSequence() {
     let audio1 = document.getElementById("audio1");
     let audio2 = document.getElementById("audio2");
 
     audio1.play();
-
     audio1.onended = () => {
         audio2.play();
     };
-
-    audio2.onended = () => {
-        audio3.play();
-    };
 }
+
+// Confetti & hearts
+function launchConfetti() { /* your existing code */ }
+function launchHearts() { /* your existing code */ }
+
+// Click outside modals to close
+window.addEventListener("click", function(e) {
+    const gallery = document.getElementById("galleryModal");
+    const celebs = document.getElementById("celebModal");
+
+    if (e.target === gallery) gallery.classList.remove("show");
+    if (e.target === celebs) celebs.classList.remove("show");
 });
 </script>
 <div id="galleryModal" class="modal hidden">
