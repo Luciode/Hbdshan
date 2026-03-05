@@ -153,6 +153,9 @@ yesBtn.addEventListener("click", () => {
         <button onclick="openGallery()" style="margin-top:20px;">
             My Fav Pics <3 📸
         </button>
+        <button onclick="openBirthdayCelebs()" style="margin-top:10px;">
+            People You Share a Birthday With 🌟
+        </button>
     `;
 
     launchConfetti();
@@ -257,6 +260,13 @@ window.addEventListener("click", function(e) {
     if (e.target === modal) {
         modal.classList.remove("show");
     }
+function openBirthdayCelebs() {
+    document.getElementById("celebModal").classList.add("show");
+}
+
+function closeCelebs() {
+    document.getElementById("celebModal").classList.remove("show");
+}
 });
 </script>
 <div id="galleryModal" class="modal hidden">
@@ -272,6 +282,17 @@ window.addEventListener("click", function(e) {
         <img src="images/IMG_5440.jpg" class="memory">
         <img src="images/IMG_5441.jpg" class="memory">
         <img src="images/IMG_5442.jpg" class="memory">
+    </div>
+<div id="celebModal" class="modal">
+    <div class="modal-content">
+        <span onclick="closeCelebs()" class="close">&times;</span>
+        <h2>Famous People Who Share Your Birthday 🌟</h2>
+
+        <p>🎤 Maddison Beer</p>
+        <p>🎬 Matt Lucas</p>
+        <p>🎬 Eva Mendes</p>
+
+        <p style="margin-top:20px;">And the most important one... YOU ❤️</p>
     </div>
 </div>
 </body>
