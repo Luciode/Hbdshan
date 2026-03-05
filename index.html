@@ -238,8 +238,66 @@ function generateReasons() {
 // Gallery mo
 
 // Confetti & hearts
-function launchConfetti() { /* your existing code */ }
-function launchHearts() { /* your existing code */ }
+function launchConfetti() {
+    for (let i = 0; i < 100; i++) {
+        let confetti = document.createElement("div");
+        confetti.classList.add("confetti");
+        confetti.style.position = "absolute";
+        confetti.style.width = "10px";
+        confetti.style.height = "10px";
+        confetti.style.backgroundColor = ["#ffcc00", "#ff6b6b", "#4ecdc4", "#a29bfe", "#fd79a8"][Math.floor(Math.random() * 5)];
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.top = "-20px";
+        confetti.style.borderRadius = "50%";
+        confetti.style.opacity = 0.9;
+        confetti.style.zIndex = 999;
+
+        // Random animation duration
+        let duration = Math.random() * 3 + 2; // 2-5 seconds
+        confetti.style.transition = `transform ${duration}s linear, top ${duration}s linear`;
+
+        document.body.appendChild(confetti);
+
+        // Trigger animation
+        setTimeout(() => {
+            confetti.style.transform = `rotate(${Math.random() * 720}deg)`;
+            confetti.style.top = "100vh";
+        }, 50);
+
+        // Remove confetti after animation
+        setTimeout(() => {
+            confetti.remove();
+        }, duration * 1000 + 200);
+    }
+}
+
+function launchHearts() {
+    for (let i = 0; i < 40; i++) {
+        let heart = document.createElement("div");
+        heart.innerHTML = "💖";
+        heart.style.position = "absolute";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.top = "100vh";
+        heart.style.fontSize = (Math.random() * 20 + 20) + "px";
+        heart.style.zIndex = 999;
+
+        // Random animation duration
+        let duration = Math.random() * 3 + 3; // 3-6 seconds
+        heart.style.transition = `top ${duration}s linear`;
+
+        document.body.appendChild(heart);
+
+        // Trigger floating up
+        setTimeout(() => {
+            heart.style.top = "-50px";
+        }, 50);
+
+        // Remove heart after animation
+        setTimeout(() => {
+            heart.remove();
+        }, duration * 1000 + 200);
+    }
+}
 function openGallery() {
     document.getElementById("galleryModal").classList.add("show");
 }
@@ -293,7 +351,7 @@ window.addEventListener("click", function(e) {
         <p style="margin-top:20px;">And the most important one... YOU ❤️</p>
     </div>
 </div>
-<audio id="audio1" src="audio/audio1.mp3"></audio>
-<audio id="audio2" src="audio/audio2.mp3"></audio>
+<audio id="audio1" src="Audio/audio1.mp3"></audio>
+<audio id="audio2" src="Audio/audio2.mp3"></audio>
 </body>
 </html>
